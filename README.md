@@ -6,4 +6,4 @@ sudo java Djava.security.policyerver.policy engine.ServerLauncher
 
 and the client with this
 
-sudo java -Djava.security.policy=client.policy client.ComputeMyTask 
+sudo java -Djava.security.policy=client.policy quiz.ComputeAddQuestion
