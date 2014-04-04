@@ -14,13 +14,20 @@ public class ComputeEngine extends UnicastRemoteObject implements Compute {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	public static Map<Integer, String> Questions = new HashMap<>();
+	public Map<Integer, String[]> Questions = new HashMap<Integer, String[]>();
+	
 	public ComputeEngine() throws RemoteException {
         super();
     }
 
     public <T> T executeTask(Task<T> t) {
         return t.execute();
+    }
+    
+    public String[] addQuestion (String str, String str2)throws RemoteException{
+    	System.out.println("added to db");
+    	String[] strArray = {str, str2};
+    	return Questions.put(001, strArray);
     }
 
 

@@ -6,4 +6,7 @@ import java.rmi.RemoteException;
 
 public interface Compute extends Remote {
 	<T> T executeTask(Task<T> t) throws RemoteException;
+	
+	String[] addQuestion (String str, String str2)throws RemoteException;
 }
+
