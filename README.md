@@ -2,7 +2,7 @@ Quiz
 ====
 I have succesful launched the server with this
 
-sudo java Djava.security.policyerver.policy engine.ServerLauncher
+sudo java Djava.security.policy=server.policy engine.ServerLauncher
 
 and the client with this
 
