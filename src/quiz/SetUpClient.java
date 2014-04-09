@@ -16,14 +16,14 @@ public class SetUpClient {
     	QuizBuilder quizBuilder=new QuizBuilder();
     	List<String[]> myQuiz=quizBuilder.questionsBuilder();
     	
-    	
         if (System.getSecurityManager() == null) {
             System.setSecurityManager(new SecurityManager());
         }
         try {              
             Compute comp = (Compute) Naming.lookup("//127.0.0.1:1099/Compute"); 
+            int id = comp.getId();
             for(String[] i: myQuiz){
-            	comp.addQuestion(i[0],i[1]);
+            	comp.addQuestion(i[0],i[1], id);
             }
         } catch (Exception e) {
             System.err.println("Compute exception:");
