@@ -4,22 +4,22 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Scanner;
 
 public class QuizBuilder {
 
-	public QuizBuilder() {
-		// TODO Auto-generated constructor stub
-	}
+
 	
 	List<String[]> questionsBuilder(){
 		List<String[]> QList = new ArrayList<String[]>();
+	    Scanner in = new Scanner(System.in);  
 	
 		boolean takinginput=true;
 		while(takinginput){
 	        try{
 	        	System.out.println("please enter a question to be added to the server db");
-	            String question=System.console().readLine();
-	        	int x = Integer.parseInt(System.console().readLine());
+	            String question=in.nextLine();
+	        	int x = Integer.parseInt(in.nextLine());
 	        	if(!(x==1||x==0)){
 	        		throw new IllegalArgumentException();
 	        	}
@@ -34,7 +34,7 @@ public class QuizBuilder {
 	        System.out.println("[2] Exit and create quiz"); 
 	        boolean takinginput2=true;
 	        while(takinginput2){
-	        	int y= Integer.parseInt(System.console().readLine());
+	        	int y= Integer.parseInt(in.nextLine());
 	        	if(y==1){
 	        		takinginput2=false;
 	        	}
