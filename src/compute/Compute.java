@@ -22,5 +22,6 @@ public interface Compute extends Remote {
 	 * @throws RemoteException
 	 */
 	String addQuestion (String str, String str2, int quizId) throws RemoteException;
+	
 }
 
