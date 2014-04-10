@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
-import quiz.BooleanQuestion;
+import quiz.QuestionImpl;
 import quiz.Question;
 import compute.Compute;
 
@@ -27,7 +27,7 @@ public class ComputeEngine extends UnicastRemoteObject implements Compute {
 
     
     public String addQuestion (String question, String answer, int id)throws RemoteException{
-    		Question theQuestion = new BooleanQuestion(question, Integer.parseInt(answer)==1?true:false);
+    		Question theQuestion = new QuestionImpl(question, Integer.parseInt(answer)==1?true:false);
     		List<Question> QuestionArray=Questions.get(id);
     		if(QuestionArray==null){
     			QuestionArray=new ArrayList<Question>();
