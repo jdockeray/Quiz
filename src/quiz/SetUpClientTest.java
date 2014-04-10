@@ -49,10 +49,14 @@ public class SetUpClientTest {
 	 * @throws RemoteException 
 	 */
 	@Test
-	public void duplicateIdtest()  {
-		Object x=null;
-		Integer y=0;
-		assertEquals("Uh oh they are not equal", x, x);
+	public void duplicateIdtest()   {
+		try {
+			int x=comp.getId();
+			int y=comp.getId();
+			assertFalse(x==y);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 }
