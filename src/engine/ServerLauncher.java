@@ -24,7 +24,6 @@ public class ServerLauncher {
 			} catch (RemoteException e) {
 				System.out.println("Start Registry failed as Registry is probably already running");
 			}
-			
 			try {
 			    Compute engine = new ComputeEngine();
 				String registryHost = "//localhost/";
