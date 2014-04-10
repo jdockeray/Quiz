@@ -1,4 +1,4 @@
-package quiz;
+package tests;
 
 import static org.junit.Assert.*;
 
@@ -16,7 +16,7 @@ import compute.Compute;
 /**
  * @author James
  * 
- * The idea behind this Testing Class, is that it will the Remote Objects Methods from the client.
+ * The idea behind this Testing Class, is that it will call the Remote Objects Methods from the client.
  *
  */
 public class SetUpClientTest {
@@ -58,5 +58,6 @@ public class SetUpClientTest {
 			e.printStackTrace();
 		}
 	}
+	
 
 }

@@ -1,16 +1,17 @@
-package quiz;
+package Client;
 
 
 import java.rmi.Naming;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+
 import compute.Compute;
 
-public class SetUpClient {
+public class Client {
 	
     public static void main(String args[]) {
-    	QuizBuilder quizBuilder=new QuizBuilder();
+    	ClientMethods quizBuilder=new ClientMethods();
     	List<String[]> myQuiz=quizBuilder.questionsBuilder();
     //	if (System.getSecurityManager() == null) {
       //      System.setSecurityManager(new SecurityManager());

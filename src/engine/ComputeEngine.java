@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
+import quiz.BooleanQuestion;
+import quiz.Question;
 import compute.Compute;
 
 

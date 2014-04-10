@@ -1,4 +1,4 @@
-package engine;
+package quiz;
 
 public interface Question {
 	

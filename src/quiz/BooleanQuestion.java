@@ -1,4 +1,5 @@
-package engine;
+package quiz;
+
 
 public class BooleanQuestion implements Question{
 	
