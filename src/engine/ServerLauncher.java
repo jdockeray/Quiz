@@ -18,7 +18,8 @@ public class ServerLauncher {
 			//if(System.getSecurityManager() == null) {
 				//System.setSecurityManager(new RMISecurityManager());
 			//}
-
+	
+		//Try to open the registry if that fails assume that it is already running
 			try {
 				LocateRegistry.createRegistry(1099);
 			} catch (RemoteException e) {
