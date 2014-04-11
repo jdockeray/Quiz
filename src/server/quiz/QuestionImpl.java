@@ -1,4 +1,4 @@
-package quiz;
+package server.quiz;
 
 public class QuestionImpl implements Question{
 	

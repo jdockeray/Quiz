@@ -1,4 +1,4 @@
-package engine;
+package server.engine;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
@@ -9,10 +9,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
-import quiz.ClientSetUp;
-import quiz.QuestionImpl;
-import quiz.Question;
 import compute.Compute;
+
+import server.quiz.ClientSetUp;
+import server.quiz.Question;
+import server.quiz.QuestionImpl;
 
 
 public class ComputeEngine extends UnicastRemoteObject implements Compute {

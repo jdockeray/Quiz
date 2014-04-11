@@ -7,8 +7,9 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import quiz.ClientSetUp;
 import compute.Compute;
+
+import server.quiz.ClientSetUp;
 
 public class Client {
 	

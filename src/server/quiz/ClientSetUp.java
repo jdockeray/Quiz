@@ -1,4 +1,4 @@
-package quiz;
+package server.quiz;
 
 import java.io.Serializable;
 import java.rmi.RemoteException;

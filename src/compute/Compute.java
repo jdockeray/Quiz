@@ -3,7 +3,7 @@ package compute;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 
-import quiz.ClientSetUp;
+import server.quiz.ClientSetUp;
 
 
 public interface Compute extends Remote {
