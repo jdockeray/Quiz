@@ -1,5 +1,9 @@
 Quiz
 ====
+
+A Quiz game app
+
+---
 I have succesful launched the server with this
 
 sudo java -Djava.security.policy=server.policy engine.ServerLauncher
