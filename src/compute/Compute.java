@@ -3,6 +3,8 @@ package compute;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 
+import quiz.ClientSetUp;
+
 
 public interface Compute extends Remote {
 	/**
@@ -10,18 +12,15 @@ public interface Compute extends Remote {
 	 */
 	int getId() throws RemoteException;
 	
-	/**
-	 * Retrieves two s from the client which represent 
-	 * a single quiz questions,
-	 * 
-	 * 
-	 * @param str
-	 * @param str2
-	 * @param the quiz id
-	 * @return Returns the array once it has been added
-	 * @throws RemoteException
-	 */
-	String addQuestion (String str, String str2, int quizId) throws RemoteException;
-	
+    /**
+     * @param id
+     * @param question
+     * @param answer
+     * @param fakeAnswers
+     * @throws RemoteException 
+     */
+    void addMultiChoiceQuestion(int id, String question,  String answer, String... fakeAnswers) throws RemoteException;
+    
+    ClientSetUp setUpClientObject() throws RemoteException;
 }
 
