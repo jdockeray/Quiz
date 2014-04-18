@@ -64,15 +64,21 @@ public class ClientSetUp implements Serializable{
 	}
 	
 	public void submitQuiz(Compute remoteQuizServer, ArrayList<ArrayList<String>> quiz) throws RemoteException{
-        int id = remoteQuizServer.getId();
+        Integer id=null;
+        
 		for(ArrayList<String> q: quiz){
         	Iterator<String> it=q.iterator();
         	Object[] temp=q.subList(2, q.size()-1).toArray();
         	String[] falseQuestions=new String[temp.length];
-        	for(int i=0;i<temp.length;i++){
-        		falseQuestions[i]=(String) temp[i];
-        	}
-        	remoteQuizServer.addMultiChoiceQuestion(id, it.next(), it.next(), falseQuestions);
+	        	for(int i=0;i<temp.length;i++){
+	        		falseQuestions[i]=(String) temp[i];
+	        	}
+	        if(id==null){
+	        	id=remoteQuizServer.addFirstMultiChoiceQuestion(it.next(), it.next(), falseQuestions);
+	        }
+	        else{
+	        	remoteQuizServer.addMultiChoiceQuestion(id, it.next(), it.next(), falseQuestions);
+	        }
 		}
 	}
 
