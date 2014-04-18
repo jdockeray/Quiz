@@ -19,10 +19,16 @@ public class Client {
       //      System.setSecurityManager(new SecurityManager());
         //}
     	
-        try {              
+        try {   
+        	
+        	//SET UP
+        	//connect to remote
             Compute comp = (Compute) Naming.lookup("//127.0.0.1:1099/Compute"); 
+            //get the set up methods
             ClientSetUp quizBuilder=comp.setUpClientObject();
+            //build the quiz
         	ArrayList<ArrayList<String>> myQuiz=quizBuilder.questionsBuilder();
+        	//submit quiz
         	quizBuilder.submitQuiz(comp, myQuiz);
            
             
