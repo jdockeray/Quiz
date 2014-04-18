@@ -10,10 +10,10 @@ import java.util.Map;
 import java.util.Random;
 
 import compute.Compute;
-
 import server.quiz.ClientSetUp;
 import server.quiz.Question;
 import server.quiz.QuestionImpl;
+import server.quiz.QuizUtilities;
 
 
 public class ComputeEngine extends UnicastRemoteObject implements Compute {
@@ -28,35 +28,36 @@ public class ComputeEngine extends UnicastRemoteObject implements Compute {
         super();
     }
 
-    public void addMultiChoiceQuestion(int id, String question,  String answer, String... fakeAnswers)throws RemoteException{
-    	String[] allAnswers=Arrays.copyOf(fakeAnswers, fakeAnswers.length+1);
-    	allAnswers[allAnswers.length-1]=answer;
-    	shuffleArray(allAnswers);
+    public void addMultiChoiceQuestion(int id, String question,  String answer, String... fakeAnswers)throws RemoteException, IllegalArgumentException{
+    	
+    	QuizUtilities.sanitizeString(fakeAnswers);
+    	QuizUtilities.sanitizeString(question);
+    	QuizUtilities.sanitizeString(answer);
+
+
     	Question q=new QuestionImpl(question, answer, fakeAnswers);
-    	List<Question> QuestionArray=quizArray.get(id);
-		if(QuestionArray==null){
-			QuestionArray=new ArrayList<Question>();
+		if(quizArray.get(id)==null){
+			quizArray.put(id, new ArrayList<Question>());
 		}
-		QuestionArray.add(q);
+		quizArray.get(id).add(q);
     }
     
-    // Implementing Fisher–Yates shuffle
-    public void shuffleArray(String[] ar)
-    {
-      Random rnd = new Random();
-      for (int i = ar.length - 1; i > 0; i--)
-      {
-    	// Generates a random index, from a decreasing range of numbers
-        int index = rnd.nextInt(i + 1);
-        // Save the value
-        String a = ar[index];
-        // Swap it with position i
-        ar[index] = ar[i];
-        ar[i] = a;
-      }
+    public int addFirstMultiChoiceQuestion(String question, String answer, String... fakeAnswers)
+    throws RemoteException, IllegalArgumentException {
+    	QuizUtilities.sanitizeString(fakeAnswers);
+    	QuizUtilities.sanitizeString(question);
+    	QuizUtilities.sanitizeString(answer);
+    	Question q=new QuestionImpl(question, answer, fakeAnswers);
+    	
+    	int id=getId();
+    	List<Question> aList=new ArrayList<Question>();
+		quizArray.put(id, aList);
+		quizArray.get(id).add(q);
+		return id;   	
     }
     
-   public int getId(){
+
+   public int getId() throws RemoteException{
     	Random r = new Random();
 		int x = r.nextInt(99999999);
     	try{
@@ -70,14 +71,19 @@ public class ComputeEngine extends UnicastRemoteObject implements Compute {
     	return x;
     }
    
+   public Map<Integer, List<Question>> getQuizArray() throws RemoteException{
+	   return quizArray;
+   }
+
+
    public ClientSetUp setUpClientObject() throws RemoteException{
 	   return new ClientSetUp();
    }
-   
-   
-   
-   
- 
+
+   public List<Question> getQuiz(int id) throws RemoteException{
+		return quizArray.get(id);
+		
+	}
 
 
 }
