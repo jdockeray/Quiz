@@ -16,7 +16,7 @@ import compute.Compute;
 /**
  * @author James
  * 
- * The idea behind this Testing Class, is that it will call the Remote Objects Methods from the client.
+ * The idea behind this Testing Class, is that it tests the methods used in setting up the client
  *
  */
 public class SetUpClientTest {
@@ -45,7 +45,7 @@ public class SetUpClientTest {
 	}
 
 	/**
-	 * Creates two numbers and checks that they are no the same
+	 * Creates two numbers and checks that they are not the same
 	 * @throws RemoteException 
 	 */
 	@Test
