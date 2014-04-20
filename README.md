@@ -2,7 +2,7 @@ Quiz
 ====
 **Intro**
 
-This is basic multi player quiz game, that once the server has been started allows players to join a quiz or play and then find out who the winner is based on the highest score. If the highest scores are tied, then the winner is the first person to reach that score.
+This is basic multi player quiz game, that once the server has been started allows players to join a quiz or play and then find out who the winner is based on the highest score. If the highest scores are tied, then the winner is the first person to reach that score. Scores are allocated for each player per quiz. So for quiz 1 and quiz 2, player 1 will have different scores.
 
 It also allows players to create a quiz, with as many questions and multi choice answers as they desire and to give that quiz a name. 
 
