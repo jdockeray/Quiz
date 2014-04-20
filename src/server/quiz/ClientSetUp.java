@@ -30,11 +30,12 @@ public class ClientSetUp implements Serializable{
 		        System.out.println("Please enter an answer to be added to the server db");
 		        str=System.console().readLine();
 		        QList.get(QList.size()-1).add(str);
-		        System.out.println("Please add a wrong answer");
-	        	str=System.console().readLine();
-		        QList.get(QList.size()-1).add(str);
+		       
 		        boolean takinganswers=true;
 		        do{
+		        	System.out.println("Please add a wrong answer");
+			        str=System.console().readLine();
+				    QList.get(QList.size()-1).add(str);
 		        	System.out.println("Would you like to add another optional answer");
 		        	System.out.println("[1] Add another fake answer");
 		        	System.out.println("[2] Add another Question");
