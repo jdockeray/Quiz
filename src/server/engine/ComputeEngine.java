@@ -36,7 +36,7 @@ public class ComputeEngine extends UnicastRemoteObject implements Compute {
 	public List<String> playerNames = new ArrayList<String>();
 	
 	
-	public boolean addPlayerName(String name)throws RemoteException{
+	synchronized public boolean addPlayerName(String name)throws RemoteException{
 		if(!playerNames.contains(name)){
 		playerNames.add(name);
 		return true;
@@ -50,7 +50,7 @@ public class ComputeEngine extends UnicastRemoteObject implements Compute {
 		return quizNames.get(name);
 	};
 	
-	public void addScore(int quizId, int score, String playerName)throws RemoteException{
+	synchronized public void addScore(int quizId, int score, String playerName)throws RemoteException{
 		playerScore ps=new playerScore(score, playerName);
 		if(quizScores.containsKey(quizId)){
 			quizScores.get(quizId).add(ps);
@@ -66,7 +66,7 @@ public class ComputeEngine extends UnicastRemoteObject implements Compute {
 		quizScores.remove(quizId);
 		return winner;
 	}
-	public boolean addQuizName(String s, Integer i)throws RemoteException{
+	synchronized public boolean addQuizName(String s, Integer i)throws RemoteException{
 		if(quizNames.containsKey(s)){
 			return false;
 		}
@@ -82,7 +82,7 @@ public class ComputeEngine extends UnicastRemoteObject implements Compute {
         super();
     }
 
-    public void addMultiChoiceQuestion(int id, String question,  String answer, String... fakeAnswers)throws RemoteException, IllegalArgumentException{
+	synchronized public void addMultiChoiceQuestion(int id, String question,  String answer, String... fakeAnswers)throws RemoteException, IllegalArgumentException{
     	
     	QuizUtilities.sanitizeString(fakeAnswers);
     	QuizUtilities.sanitizeString(question);
@@ -96,7 +96,7 @@ public class ComputeEngine extends UnicastRemoteObject implements Compute {
 		quizArray.get(id).add(q);
     }
     
-    public int addFirstMultiChoiceQuestion(String question, String answer, String... fakeAnswers)
+	synchronized public int addFirstMultiChoiceQuestion(String question, String answer, String... fakeAnswers)
     throws RemoteException, IllegalArgumentException {
     	QuizUtilities.sanitizeString(fakeAnswers);
     	QuizUtilities.sanitizeString(question);
@@ -142,7 +142,7 @@ public class ComputeEngine extends UnicastRemoteObject implements Compute {
 		return quizArray.get(id);	
    }
    
-   public void builddb() throws RemoteException{
+   synchronized public void builddb() throws RemoteException{
 	   String csvFile = "quizes.txt";
 	   BufferedReader br = null;
 	   String line = "";
@@ -216,7 +216,7 @@ public class ComputeEngine extends UnicastRemoteObject implements Compute {
 	* This method must be executed when the program is closed and when/if the
 	* user requests it.
 	*/
-   public void flush() throws RemoteException{
+   synchronized public void flush() throws RemoteException{
 	   String eol = System.getProperty("line.separator"); 
 		try {
 			FileWriter writer = new FileWriter("quizes.txt");
