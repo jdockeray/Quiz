@@ -239,6 +239,22 @@ public class ComputeEngineTest {
 	}
 	
 	@Test
+	public void testQuizScoresEqualScore(){
+		try {
+			c.addScore(102, 20,"z");
+			c.addScore(102, 20,"a");
+			c.addScore(102, 20,"f");
+			c.addScore(102, 20,"h");	
+			c.addScore(102, 20,"i");
+
+			assertEquals(c.getWinner(102), "z");
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	@Test
 	public void testGetQuizIdBasic(){
 		try {
 			c.addQuizName("standard", 101);
