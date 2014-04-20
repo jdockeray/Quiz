@@ -15,9 +15,9 @@ import compute.Compute;
 
 public class ServerLauncher {
 	public static void main(String[] args){
-			//if(System.getSecurityManager() == null) {
-				//System.setSecurityManager(new RMISecurityManager());
-			//}
+			if(System.getSecurityManager() == null) {
+				System.setSecurityManager(new RMISecurityManager());
+			}
 	
 		//Try to open the registry if that fails assume that it is already running
 			try {
@@ -31,6 +31,9 @@ public class ServerLauncher {
 				String serviceName = "Compute";
 				Naming.rebind(registryHost + serviceName, engine);
 				System.out.println("Server Started");
+				engine.builddb();
+					System.out.println("Database constructed");
+				
 			}
 			catch (MalformedURLException ex) {
 				ex.printStackTrace();
