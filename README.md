@@ -11,7 +11,7 @@ The quizes themeselves are saved to a text based database, but the players score
 ---
 **Launching the Server and the Client**
 
-This implementation is deigned to work on a localhost. However I have tried to follow the RMI specification to mimic a Server Client application on the internet. 
+This implementation is designed to work on a localhost. However I have tried to follow the RMI specification to mimic a Server Client application on the internet. 
 
 To launch the server, compile the src folder and then navigate to the root folder of the your classes and enter the following into the terminal/console to launch the server
 
