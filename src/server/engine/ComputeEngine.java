@@ -63,7 +63,6 @@ public class ComputeEngine extends UnicastRemoteObject implements Compute {
 	}
 	public String getWinner(int quizId)throws RemoteException{
 		String winner=Collections.max(quizScores.get(quizId), new playerScoreComparator()).getName();
-		quizScores.remove(quizId);
 		return winner;
 	}
 	synchronized public boolean addQuizName(String s, Integer i)throws RemoteException{
