@@ -18,32 +18,34 @@ public class ClientSetUp implements Serializable{
 	public ArrayList<ArrayList<String>> questionsBuilder(){
 			//each node in List will contain a String List, in the Sting Array it goes 0 - Question, 1 - Answer, 2... - Other Answers
 			ArrayList<ArrayList<String>> QList = new ArrayList<ArrayList<String>>();
-		    Scanner in = new Scanner(System.in);  
 		    String str = null;
 		    boolean takingInput=true;
 		    while(takingInput){
 		    	
 		        System.out.println("Please enter a question to be added to the server db");
-		        str=in.nextLine();
+		        str=System.console().readLine();
 		        QList.add(new ArrayList<String>());
 		        QList.get(QList.size()-1).add(str);
 		        
 		        System.out.println("Please enter an answer to be added to the server db");
-		        str=in.nextLine();
+		        str=System.console().readLine();
 		        QList.get(QList.size()-1).add(str);
-		       
+		        System.out.println("Please add a wrong answer");
+	        	str=System.console().readLine();
+		        QList.get(QList.size()-1).add(str);
 		        boolean takinganswers=true;
 		        do{
-		        	System.out.println("Please add a wrong answer");
-		        	str=in.nextLine();
-			        QList.get(QList.size()-1).add(str);
-	
 		        	System.out.println("Would you like to add another optional answer");
 		        	System.out.println("[1] Add another fake answer");
 		        	System.out.println("[2] Add another Question");
 		        	System.out.println("[3] Finish and Create Quiz");
-		        	
-		        	switch(in.nextInt()){
+		        	int z=100;
+		        	try{
+		        		z=Integer.parseInt(System.console().readLine());
+		        	}
+		        	catch(Exception ex){
+		        	}
+		        	switch(z){
 		        		case 1:
 		        			break;
 		        		case 2:
@@ -56,7 +58,6 @@ public class ClientSetUp implements Serializable{
 		        		default:
 		        			System.out.println("Oops didnt catch that");
 		        	}  	
-		        	in.nextLine();
 		        }while(takinganswers);
 		}
 		return QList;

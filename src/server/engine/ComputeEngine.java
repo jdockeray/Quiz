@@ -163,7 +163,7 @@ public class ComputeEngine extends UnicastRemoteObject implements Compute {
 					int id=Integer.parseInt(tempArray[0]);
 					String question=tempArray[1];
 					String answer=tempArray[2];
-					String[] fakeAnswers=Arrays.copyOfRange(tempArray, 3, tempArray.length-1);
+					String[] fakeAnswers=Arrays.copyOfRange(tempArray, 3, tempArray.length);
 					addMultiChoiceQuestion(id, question, answer, fakeAnswers);
 				}
 			}	

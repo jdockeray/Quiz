@@ -10,11 +10,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
-
 import compute.Compute;
 import server.quiz.ClientSetUp;
 import server.quiz.Player;
-import server.quiz.Question;
 
 public class Client {
 	
@@ -37,6 +35,12 @@ public class Client {
         }
     }  
     
+    /**
+     * Gets the name from the user
+     * 
+     * @param comp
+     * @return
+     */
     private static String getPlayerName(Compute comp) {
     	String s="has not worked";
 		boolean takingInput=true;
@@ -51,7 +55,6 @@ public class Client {
 				else{
 					System.out.println("sorry that name is taken");
 				}
-			return s;
 		} catch (RemoteException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -61,6 +64,11 @@ public class Client {
     }
     
     
+    /**
+     * Resets the score for a given quiz and returns the winner
+     * 
+     * @param comp
+     */
     public static void ResetQuizScoreAndGetWinner(Compute comp){
 		try {
 		  	System.out.println("type the name of the quiz you want to find out the winner for");
@@ -77,6 +85,11 @@ public class Client {
 			e.printStackTrace();
 		}
     }
+	/**
+	 * Saves all quizes
+	 * 
+	 * @param comp
+	 */
 	public static void savdDb(Compute comp){
     	try {
 			comp.flush();
@@ -86,6 +99,13 @@ public class Client {
     	System.out.println("changes saved");
     }
     
+    /**
+     * Plays a quiz
+     * 
+     * @param comp
+     * @param id
+     * @param playerName
+     */
     public static void playQuiz(Compute comp, int id, String playerName){
     	Player p;
 		try {
@@ -99,6 +119,12 @@ public class Client {
 		}
     }
     
+    /**
+     * Select from a list of quiz names and play one
+     * 
+     * @param comp
+     * @param playerName
+     */
     public static void selectandPlayQuiz(Compute comp, String playerName){
     	try {
 			Map<String, Integer> quizNames=comp.returnQuizNames();
@@ -127,6 +153,12 @@ public class Client {
 		}
     }
     
+    /**
+     * Build the quiz
+     * 
+     * @param comp
+     * @param playerName
+     */
     public static void quizBuilder(Compute comp, String playerName){
         //get the set up methods
         ClientSetUp quizBuilder;
@@ -167,12 +199,18 @@ public class Client {
 		}
     }
     
+    /**
+     * @param comp
+     * @param playerName
+     */
     public static void menu(Compute comp, String playerName){
 	    while(true){
 	    	System.out.println("what would you like to do?");
 	    	System.out.println("[0] build a new quiz");
 	    	System.out.println("[1] select from a list of quiz names");
 	    	System.out.println("[2] reset quiz scores and get winner");
+	    	System.out.println("[3] quit");
+
 	    	int i=100;
 	    	try{
 	    		i=Integer.parseInt(System.console().readLine());
@@ -189,6 +227,11 @@ public class Client {
 					break;
 				case 2:
 					ResetQuizScoreAndGetWinner(comp);
+					break;
+				case 3:
+			    	System.out.println("bye");
+					System.exit(0);
+					break;
 				default:
 					break;
 	    	}

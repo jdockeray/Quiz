@@ -83,12 +83,55 @@ public interface Compute extends Remote {
     void flush() throws RemoteException;
     
     
+    /**
+     * Adds the Quiz name
+     * 
+     * @param s The name of the quiz
+     * @param i The id of the quiz
+     * @return true if added, false if exists already
+     * @throws RemoteException
+     */
     boolean addQuizName(String s, Integer i)throws RemoteException;
     
+    /**
+     * Adds the score of the player
+     * 
+     * @param quizId
+     * @param score
+     * @param playerName
+     * @throws RemoteException
+     */
     public void addScore(int quizId, int score, String playerName)throws RemoteException;
+    /**
+     * Works out the winner
+     * 
+     * @param quizId
+     * @return
+     * @throws RemoteException
+     */
     public String getWinner(int quizId)throws RemoteException;
+    /**
+     * Gets the list of Quiz Names 
+     * 
+     * @return The list of Quiz Names
+     * @throws RemoteException
+     */
     public Map<String, Integer> returnQuizNames() throws RemoteException;
+    /**
+     * Adds a player name
+     * 
+     * @param name
+     * @return
+     * @throws RemoteException
+     */
     public boolean addPlayerName(String name)throws RemoteException;
+    /**
+     * Gets the id of the quiz from a given String
+     * 
+     * @param name the name of the quiz
+     * @return
+     * @throws RemoteException
+     */
     public Integer getQuizId(String name)throws RemoteException;
 }
 
