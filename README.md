@@ -4,11 +4,17 @@ Quiz
 A Quiz game app
 
 ---
-I have succesful launched the server with this
+To launch the server, navigate to the root folder and enter the following to launch the server
 
-sudo java -Djava.security.policy=server.policy engine.ServerLauncher
+java -Djava.security.policy=server.policy server.engine.ServerLauncher
 
-and the client with this
+and the client with this..
 
-sudo java -Djava.security.policy=client.policy quiz.ComputeAddQuestion
+java -Djava.security.policy=client.policy client.Client
 
+and then follow the instructions in the terminal/console.
+
+---
+Additional info
+
+All the methods that the client can call on the server are in the compute interface which is in the compute package
