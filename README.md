@@ -11,7 +11,7 @@ The quizes themeselves are saved to a text based database, but the players score
 ---
 **Launching the Server and the Client**
 
-To launch the server, navigate to the root folder and enter the following to launch the server
+To launch the server, compile the src folder and then navigate to the root folder of the your classes and enter the following to launch the server
 
 java -Djava.security.policy=server.policy server.engine.ServerLauncher
 
