@@ -22,7 +22,7 @@ public class ClientSetUp implements Serializable{
 		    String str = null;
 		    boolean takingInput=true;
 		    while(takingInput){
-		
+		    	
 		        System.out.println("Please enter a question to be added to the server db");
 		        str=in.nextLine();
 		        QList.add(new ArrayList<String>());

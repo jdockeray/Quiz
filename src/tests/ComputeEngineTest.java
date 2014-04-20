@@ -134,6 +134,7 @@ public class ComputeEngineTest {
 		c.addMultiChoiceQuestion(2, question, answer, fakeAnswers);
 	}
 	
+	
 	@Test (expected = IllegalArgumentException.class)
 	public void addFirstMultipleChoiceQuestionTestNullMultipleChoice() throws RemoteException{
 		String[] fakeAnswers={null, "two", "three"};
@@ -222,5 +223,29 @@ public class ComputeEngineTest {
 		}
 		assertTrue(returnedQuiz instanceof List<?>);
 		assertTrue(returnedQuiz != null);
+	}
+	
+	@Test
+	public void testQuizScoresBasic(){
+		try {
+			c.addScore(102, 20,"a");
+			c.addScore(102, 21,"b");
+			assertEquals(c.getWinner(102), "b");
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	@Test
+	public void testGetQuizIdBasic(){
+		try {
+			c.addQuizName("standard", 101);
+			assertTrue(c.getQuizId("standard")==101);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
 	}
 }

@@ -38,26 +38,27 @@ public class Client {
     }  
     
     private static String getPlayerName(Compute comp) {
+    	String s="has not worked";
+		boolean takingInput=true;
+		while(takingInput){
+			System.out.println("please enter a name");
+			s=System.console().readLine();
+		
 			try {
-				String s="";
-				boolean takingInput=true;
-				while(takingInput){
-					System.out.println("please enter a name");
-					String str=System.console().readLine();
-					if(comp.addPlayerName(str)){
-						takingInput=false;
-					}
-					else{
-						System.out.println("sorry that name is take");
-					}
+				if(comp.addPlayerName(s)){
+					takingInput=false;
 				}
-				return s;
-			} catch (RemoteException e) {
+				else{
+					System.out.println("sorry that name is taken");
+				}
+			return s;
+		} catch (RemoteException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}
-			return null;
+		}	
 	}
+		return s;
+    }
     
     
     public static void ResetQuizScoreAndGetWinner(Compute comp){
@@ -131,7 +132,6 @@ public class Client {
         ClientSetUp quizBuilder;
 		try {
 			quizBuilder = comp.setUpClientObject();
-		       
 	        System.out.println("please enter a name for your quiz");
 	        String name=System.console().readLine();
 	        //build the quiz
@@ -150,18 +150,17 @@ public class Client {
 	    	}
 	      	//Player
 	    	Player p=comp.getPlayerObject();
+	    	savdDb(comp);
 	    	System.out.println("would you like to play the quiz now? ");
 	    	System.out.println("[1] Yes Please");
-	    	System.out.println("[2] No Thanks, just save");
+	    	System.out.println("[2] No Thanks");
 		    Scanner in = new Scanner(System.in);  
 	        String str;
 	        str=in.next();
 	        if(Integer.parseInt(str)==1){
 	        	playQuiz(comp, id,playerName);
 	        }
-	        else{
-	        	savdDb(comp);
-	        }
+	       
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -187,6 +186,7 @@ public class Client {
 					break;
 				case 1:
 					selectandPlayQuiz(comp, playerName);
+					break;
 				case 2:
 					ResetQuizScoreAndGetWinner(comp);
 				default:

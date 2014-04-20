@@ -62,7 +62,7 @@ public class ComputeEngine extends UnicastRemoteObject implements Compute {
 		}
 	}
 	public String getWinner(int quizId)throws RemoteException{
-		String winner=Collections.min(quizScores.get(quizId), new playerScoreComparator()).getName();
+		String winner=Collections.max(quizScores.get(quizId), new playerScoreComparator()).getName();
 		quizScores.remove(quizId);
 		return winner;
 	}
@@ -154,12 +154,18 @@ public class ComputeEngine extends UnicastRemoteObject implements Compute {
 				// 1 Question
 				// 2 Answer 
 				// 3 FakeAnswers...
+				
 				String[] tempArray = line.split(cvsSplitBy);
-				int id=Integer.parseInt(tempArray[0]);
-				String question=tempArray[1];
-				String answer=tempArray[2];
-				String[] fakeAnswers=Arrays.copyOfRange(tempArray, 3, tempArray.length-1);
-				addMultiChoiceQuestion(id, question, answer, fakeAnswers);
+				if(tempArray.length<3){
+					//do nothing as has been corrupted
+				}
+				else{
+					int id=Integer.parseInt(tempArray[0]);
+					String question=tempArray[1];
+					String answer=tempArray[2];
+					String[] fakeAnswers=Arrays.copyOfRange(tempArray, 3, tempArray.length-1);
+					addMultiChoiceQuestion(id, question, answer, fakeAnswers);
+				}
 			}	
 		}
 		catch (FileNotFoundException e) {
