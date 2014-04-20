@@ -45,7 +45,7 @@ public class Client {
     	String s="has not worked";
 		boolean takingInput=true;
 		while(takingInput){
-			System.out.println("please enter a name");
+			System.out.println("please enter a player name");
 			s=System.console().readLine();
 		
 			try {
