@@ -16,9 +16,6 @@ public class QuizUtilities {
 				throw new IllegalArgumentException();
 			}	
 		}
-		if(strArray.length<=1){
-			throw new IllegalArgumentException();
-		}
 		return strArray;	
 	}
 	

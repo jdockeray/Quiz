@@ -1,9 +1,14 @@
 package server.quiz;
 
+import java.io.Serializable;
 import java.util.Arrays;
 
-public class QuestionImpl implements Question{
+public class QuestionImpl implements Question, Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2637834762125565887L;
 	String question;
 	String[] multipleChoices=null;
 	String answer;
@@ -27,7 +32,7 @@ public class QuestionImpl implements Question{
 	}
 
 	public String[] getAllAnswers() {
-		String[] allAnswers=Arrays.copyOf(multipleChoices, multipleChoices.length);
+		String[] allAnswers=Arrays.copyOf(multipleChoices, multipleChoices.length+1);
     	allAnswers[allAnswers.length-1]=answer;
     	QuizUtilities.shuffleArray(allAnswers);
 		return allAnswers;

@@ -1,20 +1,17 @@
 package server.quiz;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.InputMismatchException;
+import java.util.Iterator;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
-public class PlayerImpl implements Player{
+public class PlayerImpl implements Player, Serializable{
 	
 	
-	
-	@Override
-	public void playQuiz(List<Question> Quiz) {
-		for(Question q:Quiz){
-		
-		}
-	}
+	private static final long serialVersionUID = 1L;
 
 	public int playQuestion(Question q){	
 	    Scanner in = new Scanner(System.in);  
@@ -29,9 +26,7 @@ public class PlayerImpl implements Player{
 		}
 		catch(InputMismatchException e){
 			System.out.println("I am sorry but I didnt catch the question was..");
-		}
-		catch(NoSuchElementException e){	
-			System.out.println("I am sorry but I didnt catch the question was");
+			return playQuestion(q);
 		}
 		if(answers[user_input]==q.getAnswer()){
 			return 1;
@@ -40,9 +35,24 @@ public class PlayerImpl implements Player{
 			return 0;
 		}
 	}
+	
+	public int playQuiz(List<Question> Quiz) {
+		int result=0;
+		for(Question q:Quiz){
+			result += playQuestion(q);
+		}
+		return result;
+	}
+	
 	public static void main(String[] args){
 		Question q=new QuestionImpl("hey this is question", "yes", "no");
+		Question q2=new QuestionImpl("hey this is question2", "yes", "no");
+		List<Question> quiz = new ArrayList<Question>();
+		quiz.add(q);
+		quiz.add(q2);
+
 		Player p=new PlayerImpl();
-		p.playQuestion(q);
+		int score=p.playQuiz(quiz);
+		System.out.println("your score is "+score);
 	}
 }

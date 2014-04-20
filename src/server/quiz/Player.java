@@ -1,15 +1,12 @@
 package server.quiz;
+import java.io.Serializable;
 import java.util.List;
 
-public interface Player {
-	void playQuiz(List<Question> Quiz);
-	
+public interface Player extends Serializable{
 	/**
-	 * Takes a question and user input at run time, returning 1 or 0 depending
-	 * on whether the answer is correct.
-	 * @param q
+	 * @param Quiz
 	 * @return
 	 */
-	int playQuestion(Question q);
+	int playQuiz(List<Question> Quiz);
 }
 

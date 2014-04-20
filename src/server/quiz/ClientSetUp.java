@@ -59,16 +59,15 @@ public class ClientSetUp implements Serializable{
 		        	in.nextLine();
 		        }while(takinganswers);
 		}
-		in.close();
 		return QList;
 	}
 	
-	public void submitQuiz(Compute remoteQuizServer, ArrayList<ArrayList<String>> quiz) throws RemoteException{
+	public int submitQuiz(Compute remoteQuizServer, ArrayList<ArrayList<String>> quiz) throws RemoteException{
         Integer id=null;
         
 		for(ArrayList<String> q: quiz){
         	Iterator<String> it=q.iterator();
-        	Object[] temp=q.subList(2, q.size()-1).toArray();
+        	Object[] temp=q.subList(2, q.size()).toArray();
         	String[] falseQuestions=new String[temp.length];
 	        	for(int i=0;i<temp.length;i++){
 	        		falseQuestions[i]=(String) temp[i];
@@ -80,6 +79,7 @@ public class ClientSetUp implements Serializable{
 	        	remoteQuizServer.addMultiChoiceQuestion(id, it.next(), it.next(), falseQuestions);
 	        }
 		}
+		return id;
 	}
 
 }
