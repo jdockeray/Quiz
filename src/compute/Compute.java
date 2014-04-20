@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import server.quiz.ClientSetUp;
+import server.quiz.Player;
 import server.quiz.Question;
 
 
@@ -61,5 +62,33 @@ public interface Compute extends Remote {
      * @throws RemoteException
      */
     public List<Question> getQuiz(int id) throws RemoteException;
+    
+    /**
+     * @return returns the player objects
+     * @throws RemoteException; 
+     */
+    Player getPlayerObject() throws RemoteException;
+    
+    /**
+     * builds the data base
+     * @return true if db is built
+     * @throws RemoteException 
+     */
+    void builddb() throws RemoteException;
+    
+    /**
+     * Saves the data base
+     * @throws RemoteException 
+     */
+    void flush() throws RemoteException;
+    
+    
+    boolean addQuizName(String s, Integer i)throws RemoteException;
+    
+    public void addScore(int quizId, int score, String playerName)throws RemoteException;
+    public String getWinner(int quizId)throws RemoteException;
+    public Map<String, Integer> returnQuizNames() throws RemoteException;
+    public boolean addPlayerName(String name)throws RemoteException;
+    public Integer getQuizId(String name)throws RemoteException;
 }
 
