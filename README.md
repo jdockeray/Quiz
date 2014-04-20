@@ -11,11 +11,13 @@ The quizes themeselves are saved to a text based database, but the players score
 ---
 **Launching the Server and the Client**
 
-To launch the server, compile the src folder and then navigate to the root folder of the your classes and enter the following to launch the server
+This implementation is deigned to work on a localhost. However I have tried to follow the RMI specification to mimic a Server Client application on the internet. 
+
+To launch the server, compile the src folder and then navigate to the root folder of the your classes and enter the following into the terminal/console to launch the server
 
 java -Djava.security.policy=server.policy server.engine.ServerLauncher
 
-and the client with this..
+and in another console/terminal launch the client with this..
 
 java -Djava.security.policy=client.policy client.Client
 
